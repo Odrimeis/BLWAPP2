@@ -37,6 +37,15 @@ export default function TabLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="recipes"
+        options={{
+          title: 'Recetas',
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons name={focused ? 'book' : 'book-outline'} color={color} size={24} />
+          ),
+        }}
+      />
       
     </Tabs>
   );

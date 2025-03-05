@@ -13,7 +13,7 @@ const Login: React.FC = () => {
 
   const handleLogin = () => {
     if (username === validUsername && password === validPassword) {
-      navigation.navigate('Home' as never);
+      navigation.navigate('(tabs)' as never);
     } else {
       alert('Usuario o contraseña incorrectos');
     }
