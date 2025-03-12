@@ -1,21 +1,18 @@
 import React, { useState, useRef } from 'react';
 import { View, StyleSheet, ScrollView, Alert } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import { IconButton, TextInput } from 'react-native-paper';
 import RecipeCardXL from '../components/Recipes/RecipeCardXL';
-import Button from '../components/commons/Button';
 import { Primary_color } from '../styles/constants';
-//import FoodsFilters from '../components/Foods/FoodsFilters';
+import { router } from 'expo-router';
 
 export default function Recipes() {
-    const navigation = useNavigation();
     const [searchQuery, setSearchQuery] = useState('');
     const [isFocused, setIsFocused] = useState(false);
     const [showFilters, setShowFilters] = useState(false);
     const searchInputRef = useRef(null);
 
     const handlePressToRecipeScreen = () => {
-        navigation.navigate('RecipeScreen' as never);
+        router.push('../auth/RecipeScreen');
     };
 
     const handleFilterClick = () => {

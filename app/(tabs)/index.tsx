@@ -1,28 +1,27 @@
 import { View, StyleSheet, Alert, Pressable } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import { Text, IconButton } from 'react-native-paper';
 import Button from '../components/commons/Button';
 import FoodCard from '../components/commons/FoodCard';
 import IntroducedFoodCard from '../components/commons/IntroducedFoodCard';
 import { White_color, Teal_color_20, TextColor } from '../styles/constants';
+import { router } from 'expo-router';
 
 export default function Index() {
-  const navigation = useNavigation();
 
   const handleButtonClick = () => {
     Alert.alert('You pressed a button.');
   };
 
   const handleNavigateToIntroducedFoods = () => {
-    navigation.navigate('IntroducedFoods' as never);
+    router.push('/IntroducedFoods');
   };
 
   const handleNavigateToFoods = () => {
-    navigation.navigate('Foods' as never); // Ensure correct route name
+    router.push('/Foods'); // Ensure correct route name
   };
 
   const handlePressToFoodScreen = () => {
-    navigation.navigate('FoodScreen' as never);
+    router.push('../auth/FoodScreen');
   };
 
   return (

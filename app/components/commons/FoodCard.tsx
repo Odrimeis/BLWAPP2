@@ -17,7 +17,7 @@ const FoodCard: React.FC<FoodCardProps> = ({ onPress }) => {
       <View style={styles.imageContainer}>
         <Image source={PlaceholderImage} style={styles.image} />
       </View>
-      <Text style={styles.textBold}>Nombreo</Text>
+      <Text style={styles.text}>Nombreo</Text>
     </Pressable>
   );
 };
@@ -45,9 +45,8 @@ const styles = StyleSheet.create({
     top: 8,
     left: 8,
   },
-  textBold: {
+  text: {
     fontSize: 16,
-    fontWeight: 'bold',
   },
   textAge: {
     fontSize: 12,

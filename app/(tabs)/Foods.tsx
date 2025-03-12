@@ -1,21 +1,20 @@
 import React, { useState, useRef } from 'react';
 import { View, StyleSheet, ScrollView, Alert } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import { IconButton, TextInput } from 'react-native-paper';
 import FoodCardXL from '../components/Foods/FoodCardXL';
 import Button from '../components/commons/Button';
 import { Primary_color } from '../styles/constants';
 import FoodsFilters from '../components/Foods/FoodsFilters';
+import { router } from 'expo-router';
 
 export default function Foods() {
-    const navigation = useNavigation();
     const [searchQuery, setSearchQuery] = useState('');
     const [isFocused, setIsFocused] = useState(false);
     const [showFilters, setShowFilters] = useState(false);
     const searchInputRef = useRef(null);
 
     const handlePressToFoodScreen = () => {
-        navigation.navigate('FoodScreen' as never);
+        router.push('../auth/FoodScreen');
     };
 
     const handleFilterClick = () => {

@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { TextInput, Button, Text } from 'react-native-paper';
-import { useNavigation } from '@react-navigation/native';
+import { router } from 'expo-router';
 
 const Login: React.FC = () => {
-  const navigation = useNavigation();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -13,7 +12,7 @@ const Login: React.FC = () => {
 
   const handleLogin = () => {
     if (username === validUsername && password === validPassword) {
-      navigation.navigate('(tabs)' as never);
+      router.push('../(tabs)/index');
     } else {
       alert('Usuario o contraseña incorrectos');
     }

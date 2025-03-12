@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import { View, StyleSheet, Alert, Text, Pressable } from 'react-native';
 import { Image } from 'expo-image';
 import { Checkbox, IconButton } from 'react-native-paper';
-import Button from './components/commons/Button';
-import { Border_radius, White_color } from './styles/constants';
+import Button from '../components/commons/Button';
+import { Border_radius, White_color } from '../styles/constants';
 
 const PlaceholderImage = require("@/assets/images/background-image.png");
 
-export default function RecipeScreen() {
-  //const [checked, setChecked] = useState(false);
-  const [expandedHow, setExpandedHow] = useState(true);
-  const [expandedSteps, setExpandedSteps] = useState(true);
+export default function FoodScreen() {
+  const [checked, setChecked] = useState(false);
+  const [expandedHow, setExpandedHow] = useState(false);
+  const [expandedNutrition, setExpandedNutrition] = useState(false);
 
   const handleButtonClick = () => {
     Alert.alert('You pressed a button.');
@@ -19,21 +19,25 @@ export default function RecipeScreen() {
   const toggleExpandHow = () => {
     setExpandedHow(!expandedHow);
   };
-  const toggleExpandSteps = () => {
-    setExpandedSteps(!expandedSteps);
+  const toggleExpandNutrition = () => {
+    setExpandedNutrition(!expandedNutrition);
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Nombre de la receta</Text>
+        <Checkbox
+          status={checked ? 'checked' : 'unchecked'}
+          onPress={() => setChecked(!checked)}
+        />
+        <Text style={styles.title}>Nombre del alimento</Text>
         <Button theme="primary" label={""} fullWidth={false} onPress={handleButtonClick} icon="pencil" />
       </View>
       <Image source={PlaceholderImage} style={styles.image} />
 
       <View style={styles.collapsibleContainer}>
         <Pressable style={styles.collapsibleHeader} onPress={toggleExpandHow}>
-          <Text style={styles.collapsibleTitle}>Ingredientes</Text>
+          <Text style={styles.collapsibleTitle}>¿Cómo presentar?</Text>
           <IconButton icon={expandedHow ? "chevron-up" : "chevron-down"} size={24} />
         </Pressable>
         {expandedHow && (
@@ -44,11 +48,11 @@ export default function RecipeScreen() {
       </View>
 
       <View style={styles.collapsibleContainer}>
-        <Pressable style={styles.collapsibleHeader} onPress={toggleExpandSteps}>
-          <Text style={styles.collapsibleTitle}>Paso a paso</Text>
-          <IconButton icon={expandedSteps ? "chevron-up" : "chevron-down"} size={24} />
+        <Pressable style={styles.collapsibleHeader} onPress={toggleExpandNutrition}>
+          <Text style={styles.collapsibleTitle}>Valor nutricional</Text>
+          <IconButton icon={expandedNutrition ? "chevron-up" : "chevron-down"} size={24} />
         </Pressable>
-        {expandedSteps && (
+        {expandedNutrition && (
           <Text style={styles.collapsibleContent}>
             Para introducir el huevo a un bebé de 6 meses, comienza cocinando el huevo de manera segura, ya sea hervido o revuelto, y asegúrate de que esté bien cocido para evitar el riesgo de salmonela. Puedes ofrecer pequeñas piezas de huevo cocido o trocitos suaves, permitiendo que el bebé lo agarre y lo lleve a su boca por sí mismo. Observa por si hubiera alguna reacción alérgica, como erupciones en la piel o problemas digestivos. Además, recuerda que el huevo es una gran fuente de proteínas y nutrientes que ayudarán en el crecimiento de tu bebé.
           </Text>
@@ -57,6 +61,7 @@ export default function RecipeScreen() {
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
